@@ -17,7 +17,7 @@ spec:
       containers:
       - name: stable-app
         image: stable-app
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never # instead of IfNotPresent
         ports:
         - containerPort: 80
         readinessProbe:
