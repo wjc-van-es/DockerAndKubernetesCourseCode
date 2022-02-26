@@ -9,12 +9,12 @@ option such as Minikube can be used.
 4. minikube needs to be set to the existing docker configuration or it won't be able to find locally build Docker
    images.
     1. Therefore, run `eval $(minikube docker-env)` in every bash terminal that will use minikube with locally build
-       Docker images For a Windows powershell use `minikube docker-env | Invoke-Expression` instead.
+       Docker images. For a Windows powershell use `minikube docker-env | Invoke-Expression` instead.
        See https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube
     2. Furthermore, minikube will try to pull Docker images from remote Docker repos unless you set imagePullPolicy:
        Never (instead of IfNotPresent) in every deployment yaml.
     3. So set in both samples/canary/stable.deployment.yml:20 and samples/canary/canary.deployment.yml:20
-       spec.template.spec.containers[0].imagePullPolicy=Never
+       `spec.template.spec.containers[0].imagePullPolicy=Never`
 5. Now run `docker-compose build` to build the images that will be used for Canary testing
 6. Create the Kubernetes Service, Stable Deployment, and Canary Deployment by running the following command:
 
